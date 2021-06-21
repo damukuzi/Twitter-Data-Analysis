@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from textblob import TextBlob
-import clean_tweets_dataframe
+from .clean_tweets_dataframe import Clean_Tweets
 
 def read_json(json_file: str)->list:
     """
@@ -115,15 +115,11 @@ class TweetDfExtractor:
         return location
 
     def find_lang(self)->list:
-        try:
-            lang = [x['user']['lang'] for x in self.tweets_list]
-        except TypeError:
-            lang = ''
-        
+        lang = [x['lang'] for x in self.tweets_list]
         return lang
 
         
-    def get_tweet_df(self, save=False)->pd.DataFrame:
+    def get_tweet_df(self, save=True)->pd.DataFrame:
         """required column to be generated you should be creative and add more features"""
         
         columns = ['created_at', 'source', 'original_text','polarity','subjectivity', 'lang', 'favorite_count', 'retweet_count', 
@@ -162,5 +158,7 @@ if __name__ == "__main__":
     tweet_df = tweet.get_tweet_df() 
 
     # use all defined functions to generate a dataframe with the specified columns above
+
+
 
     
