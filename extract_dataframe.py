@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from textblob import TextBlob
-from .clean_tweets_dataframe import Clean_Tweets
+#from .clean_tweets_dataframe import Clean_Tweets
 
 def read_json(json_file: str)->list:
     """
