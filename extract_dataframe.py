@@ -41,7 +41,7 @@ class TweetDfExtractor:
         return statuses_count
         
     def find_full_text(self)->list:
-        text = [x['text'] for x in self.tweets_list]
+        text = [x['extended_tweet']['full_text'] for x in self.tweets_list]
 
         return text
 
@@ -88,12 +88,12 @@ class TweetDfExtractor:
         return is_sensitive * len(self.tweets_list)
 
     def find_favourite_count(self)->list:
-        favourite_count = [x['favorite_count'] for x in self.tweets_list]
+        favourite_count = [x['retweeted_status']['favorite_count'] for x in self.tweets_list]
 
         return favourite_count
     
     def find_retweet_count(self)->list:
-        retweet_count = [x['retweet_count'] for x in self.tweets_list]
+        retweet_count = [x['retweeted_status']['retweet_count'] for x in self.tweets_list]
         return retweet_count
 
     def find_hashtags(self)->list:
