@@ -41,7 +41,7 @@ class TweetDfExtractor:
         return statuses_count
         
     def find_full_text(self)->list:
-        text = [x['extended_tweet']['full_text'] for x in self.tweets_list]
+        text = [x['retweeted_status']['extended_tweet']['full_text'] for x in self.tweets_list]
 
         return text
 
